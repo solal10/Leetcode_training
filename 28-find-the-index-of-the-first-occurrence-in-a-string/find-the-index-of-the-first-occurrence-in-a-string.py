@@ -2,22 +2,9 @@ class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
         if not needle:
             return 0
-        
-        indexstart = -1
-        indexneedle = 0
-        i=0
-        while i < len(haystack):            
-            if haystack[i] == needle[indexneedle]:
-                if indexstart == -1:
-                    indexstart = i
-                indexneedle += 1
-            else:
-                if indexstart != -1:
-                    i = indexstart  
-                indexstart = -1
-                indexneedle = 0
-
-            if indexneedle == len(needle):
-                return indexstart
-            i+=1
+        # Loop through the haystack
+        for i in range(len(haystack) - len(needle) + 1):
+            # Check if the substring of haystack starting at i matches the needle
+            if haystack[i:i+len(needle)] == needle:
+                return i
         return -1
